@@ -23,21 +23,12 @@ jobs:
       # Verifica el código fuente del repositorio para que el trabajo pueda acceder a él
       - uses: actions/checkout@v4
 
-      # Ejecuta un comando simple
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Ejecuta un conjunto de comandos
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-
-      # Validación de archivos Markdown usando markdownlint
-      - name: Check Markdown
-        uses: actions/markdown-lint-action@v1
-        with:
-          files: '**/*.md'
+      # Validación de Markdown utilizando Super Linter
+      - name: Lint Markdown Files
+        uses: github/super-linter@v5
+        env:
+          VALIDATE_MARKDOWN: true
+          DEFAULT_BRANCH: main
 
       # Verificación de enlaces en los archivos Markdown
       - name: Check Links in Markdown
